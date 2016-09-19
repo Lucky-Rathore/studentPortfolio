@@ -1,0 +1,15 @@
+<div class="jumbotron text-center">
+  <h1>Student Porfolio</h1>
+  <p>Teach For India - Student Progress</p>
+</div>
+  
+<div class="container">
+  <div class="row">
+  <% _.each(Student, function(student) { %>
+    <div class="col-sm-4">
+      <h3><%= student.name %></h3>
+      <p><%= student.gender %></p>
+    </div>
+  <% }) %>
+  </div>
+</div>
