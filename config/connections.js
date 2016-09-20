@@ -58,11 +58,7 @@ module.exports.connections = {
   ***************************************************************************/
   TFIMongodbServer: {
     adapter: 'sails-mongo',
-    host: '',
-    port: ,
-    user: '', //optional
-    password: '', //optional
-    database: '' //optional
+    url: process.env.DB_URL
   }
 
   /***************************************************************************
