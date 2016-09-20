@@ -7,26 +7,7 @@
 
 module.exports = {
   attributes: {
-  	schoolName: {
-  		type: 'string',
-  		required: true,
-  		size: 100 
-  	},
-	schoolType: {
-		type: 'string',
-		required: true,
-		size: 20,
-		enum: ['Private', 'Other'] 
-	},
-	community: {
-		type: 'string',
-		size: 50 
-	},
-	city: {
-		type: 'string',
-		required: true,
-		size: 50 
-	},
+  	
 	shift: {
 		type: 'string',
 		size: 50,
@@ -49,6 +30,9 @@ module.exports = {
 	students: {
 		collection: 'student',
 		via: 'classes'
+	},
+	school: {
+		model: 'school'
 	}
 
   }

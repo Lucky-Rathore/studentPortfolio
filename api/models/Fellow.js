@@ -29,8 +29,11 @@ module.exports = {
 		size: 50
 	},
 	classes: {
-		model: 'class',
+		collection: 'class',
 		via: 'fellows'
+	},
+	school: {
+		model: 'school'
 	}
 
   }

@@ -35,6 +35,13 @@ module.exports = {
     classes: {
       collection: 'class',
       via: 'students'
+    },
+    school: {
+      model: 'school'
+    },
+    teachers: {
+      collection: 'fellow',
+      via: 'teaches'
     }
 
   }
