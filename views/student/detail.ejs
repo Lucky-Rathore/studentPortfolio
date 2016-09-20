@@ -1,107 +1,42 @@
 <div class="jumbotron text-center">
-  <h1><%= student.name %> Porfolio</h1>
-  <p>Teach For India - <%= student.name %>'s Progress</p>
+  <h1><%= student[0].name %> Porfolio</h1>
+  <p>Teach For India - <%= student[0].name %>'s Progress</p>
 </div>
   
 <div class="container">
-  <table class="table">    
-    <tbody>
   <div class="row">
     <div class="col-sm-12">
-      <p>Gender : </p>
-      <span><%= student.gender %></span>
+      <p>Gender : <b><%= student[0].gender %></b></p>
     </div>
     <div class="col-sm-12">
-      <p>Gender : </p>
-      <span><%= student.studyingYear%></span>
+      <p>Instruction Hours  : <b><%= student[0].instructionHours%></b></p>
     </div>
-<div class="col-sm-12">
-      <p>Student Absents (present year) : </p>
-      <span><%= student.parentInteraction%></span>
+    <div class="col-sm-12">
+      <p>Student Absents (present year)  : <b><%= student[0].absentDays%></b></p>
     </div>
-<div class="col-sm-12">
-      <p>Reading 2013-14 BOY (June 2013) : </p>
-      <span><%= student.Reading_BOY_2013%></span>
+    <div class="col-sm-12">
+      <p>Parent Interaction : <b><%= student[0].parentInteraction%></b></p>
     </div>
-<div class="col-sm-12">
-      <p>Reading 2013-14 EOY (March 2014) : </p>
-      <span><%= student.reading_EOY_2013%></span>
-    </div>
-<div class="col-sm-12">
-      <p>Reading 2014-15 BOY (June 2014) : </p>
-      <span><%= student.reading_BOY_2014%></span>
-    </div>
-<div class="col-sm-12">
-      <p>Reading 2014-15 EOY (March 2015) : </p>
-      <span><%= student.reading_EOY_2014%></span>
-    </div>
-<div class="col-sm-12">
-      <p>Reading 2015-16 BOY (June 2015) : </p>
-      <span><%= student.reading_BOY_2015%></span>
-    </div>
-<div class="col-sm-12">
-      <p>Reading 2015-16 MY (Nov 2015) : </p>
-      <span><%= student.Reading_MY_2015%></span>
-    </div>
-
-<div class="col-sm-12">
-      <p>Writing 2013-14 BOY (June 2013) : </p>
-      <span><%= student.writing_BOY_2013%></span>
-    </div>
-<div class="col-sm-12">
-      <p>Writing 2013-14 EOY (March 2014) : </p>
-      <span><%= student.writing_EOY_2013%></span>
-    </div>
-<div class="col-sm-12">
-      <p>Writing 2014-15 BOY (June 2014) : </p>
-      <span><%= student.writing_BOY_2014%></span>
-    </div>
-<div class="col-sm-12">
-      <p>Writing 2014-15 EOY (March 2015) : </p>
-      <span><%= student.writing_EOY_2014%></span>
-    </div>
-<div class="col-sm-12">
-      <p>Writing 2015-16 BOY (June 2015) : </p>
-      <span><%= student.writing_BOY_2015%></span>
-    </div>
-<div class="col-sm-12">
-      <p>Writing 2015-16 MY (Nov 2015) : </p>
-      <span><%= student.writing_MY_2015%></span>
-    </div>
-
-<div class="col-sm-12">
-      <p>Math 2013-14 BOY (June 2013) : </p>
-      <span><%= student.math_BOY_2013%></span>
-    </div>
-<div class="col-sm-12">
-      <p>Math 2013-14 EOY (March 2014) : </p>
-      <span><%= student.math_EOY_2013%></span>
-    </div>
-<div class="col-sm-12">
-      <p>Math 2014-15 BOY (June 2014) : </p>
-      <span><%= student.Math_BOY_2014%></span>
-    </div>
-<div class="col-sm-12">
-      <p>Math 2014-15 EOY (March 2015) : </p>
-      <span><%= student.math_EOY_2014%></span>
-    </div>
-<div class="col-sm-12">
-      <p>Math 2015-16 BOY (June 2015) : </p>
-      <span><%= student.math_BOY_2015%></span>
-    </div>
-<div class="col-sm-12">
-      <p>Math 2015-16 MY (Nov 2015) : </p>
-      <span><%= student.math_MY_2015%></span>
-    </div>
-
-<div class="col-sm-12">
-      <p>S&L 2015-16 BOY (June 2015) : </p>
-      <span><%= student.sandL_BOY_2015%></span>
-    </div>
-<div class="col-sm-12">
-      <p>S&L 2015-16 MY (Nov 2015) : </p>
-      <span><%= student.sandL_MY_2015%></span>
-    </div>
-
   </div>
+  <h2>Acadmics</h2>
+  <p><%= student[0].name %>'s Academics Reacord</p>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Subject</th>
+        <th>Period</th>
+        <th>Score</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% _.each(student[0].academic, function(acad) { %>
+        <tr>
+          <td><%= acad.subject %></td>
+          <td><%= acad.period %></td>
+          <td><%= acad.score %><%= 1!=1 ? "%" : "" %></td>
+        </tr>
+      <% }) %>
+    </tbody>
+  </table>  
+  
 </div>

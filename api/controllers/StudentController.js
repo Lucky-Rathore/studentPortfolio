@@ -15,12 +15,16 @@ module.exports = {
 	  res.view( { Student : studentResp });
 	});
   },
+
   detail : function(req, res, next) {
-    Student.findOne(req.param('id'), function foundUser(err, studentResp) {
-      if (err) return next(err);
-      if (!studentResp) return next();
-      res.view( { student : studentResp });
-    });
+  	Student.find(req.param('id'))
+  		.populate('academic')
+		.exec(function(err, studentResp) {
+		  if (err) return next(err);
+	      if (!studentResp) return next();
+	      console.log(JSON.stringify(studentResp));
+	      res.view( {student : JSON.parse(JSON.stringify(studentResp)) } );
+		});
   }
 
 };

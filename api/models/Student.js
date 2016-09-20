@@ -28,74 +28,33 @@ module.exports = {
   	parentInteraction: {
   		type: 'float'
   	},
-  	reading_BOY_2013 :{ 
-		type: 'float'
-	},
-	reading_EOY_2013 : { 
-		type: 'float'
-	},
-	reading_BOY_2014 : { 
-		type: 'float'
-	},
-	reading_EOY_2014 : { 
-		type: 'float'
-	},
-	reading_BOY_2015 : { 
-		type: 'float'
-	},
-	reading_MY_2015 : { 
-		type: 'float'
-	},
-
-	writing_BOY_2013 : { 
-		type: 'float'
-	},
-	writing_EOY_2013 : { 
-		type: 'float'
-	},
-	writing_BOY_2014 : { 
-		type: 'float'
-	},
-	writing_EOY_2014 : { 
-		type: 'float'
-	},
-	writing_BOY_2015 : { 
-		type: 'float'
-	},
-	writing_MY_2015 : { 
-		type: 'float'
-	},
-
-	math_BOY_2013 : { 
-		type: 'float'
-	},
-	math_EOY_2013 : { 
-		type: 'float'
-	},
-	math_BOY_2014 : { 
-		type: 'float'
-	},
-	math_EOY_2014 : { 
-		type: 'float'
-	},
-	math_BOY_2015 : { 
-		type: 'float'
-	},
-	math_MY_2015 : { 
-		type: 'float'
-	},
-
-	sandL_BOY_2015 : { 
-		type: 'float'
-	},
-	sandL_MY_2015 : { 
-		type: 'float'
-	}//,
-	// academics: { //To handl one to many.
-	// 	collection: 'StudentAcademics',
-	// 	via: 'student'
-	// }
+  	academic: { //To handl one to many.
+  		collection: 'academics',
+  		via: 'detailOf'
+  	},
+    classes: {
+      collection: 'class',
+      via: 'students'
+    }
 
   }
 };
+/*
+{
+"name":"Richa Shah",
+"gender":"Female",
+"instructionHours":"28",
+"absentDays":"20",
+"parentInteraction":"70",
+"classes":"1"
+}
 
+{
+"name":"Amrita Sahu",
+"gender":"Female",
+"instructionHours":"28",
+"absentDays":"4",
+"parentInteraction":"40",
+"classes":"1"
+}
+*/
