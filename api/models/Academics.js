@@ -6,30 +6,36 @@
  */
 
 module.exports = {
-
   attributes: {
   	subject: {
   		type: 'string',
   		size: 20,
-  		require: true,
+  		required: true,
   		enum: ['Math', 'Reading', 'Writing', 'SandL']
   	},
   	period: {
-  		type: 'date',
-  		require: true
+  		type: 'date'
   	},
+    periodText: {
+      type: 'string',
+      required: true
+    },
   	score: {
   		type: 'float',
-  		require: true
+  		required: true
   	},
   	scoreType: {
-		type: 'float',
-  		require: true,
+		type: 'string',
+  		required: true,
   		enum: ['Percentage', 'Other']  		
   	},
-  	student: {
-  		model: 'Student'
+  	detailOf: {
+  		model: 'student'
   	}
   }
 };
+
+
+
+
 

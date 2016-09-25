@@ -32,9 +32,10 @@ module.exports.routes = {
   *                                                                          *
   ***************************************************************************/
 
-  '/': {
-    view: 'homepage'
-  }
+  '/': { view: 'homepage' },
+  'get /student-detail/:id': 'StudentController.detail', //TOdo append get 
+  '/students': 'StudentController.show'
+
 
   /***************************************************************************
   *                                                                          *
