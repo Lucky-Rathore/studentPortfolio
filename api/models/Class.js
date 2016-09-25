@@ -29,7 +29,7 @@ module.exports = {
 	},
 	students: {
 		collection: 'student',
-		via: 'classes'
+		via: 'presentClass'
 	},
 	school: {
 		model: 'school'

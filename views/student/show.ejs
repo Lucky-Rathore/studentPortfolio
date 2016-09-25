@@ -1,15 +1,27 @@
-<div class="jumbotron text-center">
-  <h1>Student Porfolio</h1>
-  <p>Teach For India - Student Progress</p>
+<style type="text/css">
+  .stu-card { cursor: pointer; cursor: hand; }
+</style>
+<div class="well">
+  <h3>Student Porfolio</h3>
 </div>
-  
-<div class="container">
-  <div class="row">
-  <% _.each(Student, function(student) { %>
-    <div class="col-sm-4">
-      <h3><%= student.name %></h3>
-      <p><%= student.gender %></p>
+<div class="row">
+  <% _.each(student, function(student) { %>
+  <div class="col-sm-3"  >
+    <div class="well stu-card" stu="<%=student.id%>">
+      <h4><%= student.name %></h4>
+      <p><%= typeof student.presentClass === 'undefined' ? student.gender : student.gender + ", Class : " + student.presentClass.standard%></p>
+      <p><%= typeof student.school !== 'undefined' ? student.school.schoolName + ", " + student.school.city : "" %></p>
     </div>
-  <% }) %>
   </div>
+  <% }) %>            
 </div>
+
+<script type="text/javascript">
+  $(document).ready(function() {
+      $(".stu-card").click(function(){
+        location.href = '/student-detail/' + $(this).attr("stu"); 
+      });
+    });
+</script>
+
+

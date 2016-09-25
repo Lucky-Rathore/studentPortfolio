@@ -17,9 +17,27 @@
     <div class="col-sm-12">
       <p>Parent Interaction : <b><%= student[0].parentInteraction%></b></p>
     </div>
+    <div class="col-sm-12">
+      <p>Parent Interaction : <b><%= student[0].parentInteraction%></b></p>
+    </div>
+    <div class="col-sm-12">
+      <p><%= typeof student[0].presentClass === 'undefined' ? "" : "Class : " + student[0].presentClass.standard %></p>
+    </div>
+    <div class="col-sm-12">
+      <p><%= typeof student[0].school === 'undefined' ? "" : student[0].school.schoolName + ", " + student[0].school.community + ", " + student[0].school.city  %></p>
+    </div>        
   </div>
+  <h2>Teached By</h2>
+  <table class="table">
+    <tbody>
+      <% _.each(student[0].teachers, function(teach) { %>
+        <tr>
+          <td><%= teach.fellowName %></td>
+        </tr>
+      <% }) %>
+    </tbody>
+  </table>
   <h2>Acadmics</h2>
-  <p><%= student[0].name %>'s Academics Reacord</p>
   <table class="table">
     <thead>
       <tr>
@@ -32,11 +50,195 @@
       <% _.each(student[0].academic, function(acad) { %>
         <tr>
           <td><%= acad.subject %></td>
-          <td><%= acad.period %></td>
-          <td><%= acad.score %><%= 1!=1 ? "%" : "" %></td>
+          <td><%= acad.scoreType == 'Other' ? acad.periodText : acad.periodText + "%" %></td>
+          <td><%= acad.score %></td>
         </tr>
       <% }) %>
     </tbody>
-  </table>  
+  </table> 
+
+  <div class="row" >
+  <h3>Reading Marks</h3>
+  <div class="col-sm-6">
+    <canvas id="chartReading" width="100" height="100"></canvas>
+  </div>
+  </div>
+
+  <div class="row">
+  <h3>Writting Marks</h3>
+  <div class="col-sm-6">
+  <canvas id="chartWriting" width="100" height="100"></canvas>
+  </div>
+  </div>
+
+  <div class="row">
+  <h3>Maths Marks</h3>
+  <div class="col-sm-6"">
+  <canvas id="chartMath" width="100" height="100"></canvas>
+  </div>
+  </div>
+
+  <div class="row">
+  <h3>S&L Marks</h3>
+  <div class="col-sm-6">
+  <canvas id="chartSandL" width="100" height="100"></canvas>
+  </div>
+  </div>
+  
   
 </div>
+
+
+<script>
+var ctx = document.getElementById("chartMath");
+var chartMath = new Chart(ctx, {
+    type: 'bar',
+    data: {
+        labels: ["June 2013", "March 2014", "June 2014", "March 2015", "June 2015", "Nov 2015"],
+        datasets: [{
+            label: 'Marks in %',
+            data: [<%= _.pluck(_.where(student[0].academic, {"subject":"Math"}), 'score') %>],
+            backgroundColor: [
+                'rgba(255, 99, 132, 0.2)',
+                'rgba(54, 162, 235, 0.2)',
+                'rgba(255, 206, 86, 0.2)',
+                'rgba(75, 192, 192, 0.2)',
+                'rgba(153, 102, 255, 0.2)',
+                'rgba(255, 159, 64, 0.2)'
+            ],
+            borderColor: [
+                'rgba(255,99,132,1)',
+                'rgba(54, 162, 235, 1)',
+                'rgba(255, 206, 86, 1)',
+                'rgba(75, 192, 192, 1)',
+                'rgba(153, 102, 255, 1)',
+                'rgba(255, 159, 64, 1)'
+            ],
+            borderWidth: 1
+        }]
+    },
+    options: {
+        scales: {
+            yAxes: [{
+                ticks: {
+                    beginAtZero:true
+                }
+            }]
+        }
+    }
+});
+//for Reading
+var ctxReading = document.getElementById("chartReading");
+var chartReading = new Chart(ctxReading, {
+    type: 'bar',
+    data: {
+        labels: ["June 2013", "March 2014", "June 2014", "March 2015", "June 2015", "Nov 2015"],
+        datasets: [{
+            label: 'Marks',
+            data: [<%= _.pluck(_.where(student[0].academic, {"subject":"Reading"}), 'score') %>],
+            backgroundColor: [
+                'rgba(255, 99, 132, 0.2)',
+                'rgba(54, 162, 235, 0.2)',
+                'rgba(255, 206, 86, 0.2)',
+                'rgba(75, 192, 192, 0.2)',
+                'rgba(153, 102, 255, 0.2)',
+                'rgba(255, 159, 64, 0.2)'
+            ],
+            borderColor: [
+                'rgba(255,99,132,1)',
+                'rgba(54, 162, 235, 1)',
+                'rgba(255, 206, 86, 1)',
+                'rgba(75, 192, 192, 1)',
+                'rgba(153, 102, 255, 1)',
+                'rgba(255, 159, 64, 1)'
+            ],
+            borderWidth: 1
+        }]
+    },
+    options: {
+        scales: {
+            yAxes: [{
+                ticks: {
+                    beginAtZero:true
+                }
+            }]
+        }
+    }
+});
+//for Writing
+var ctxWriting = document.getElementById("chartWriting");
+var chartWriting = new Chart(ctxWriting, {
+    type: 'bar',
+    data: {
+        labels: ["June 2013", "March 2014", "June 2014", "March 2015", "June 2015", "Nov 2015"],
+        datasets: [{
+            label: 'Marks',
+            data: [<%= _.pluck(_.where(student[0].academic, {"subject":"Writing"}), 'score') %>],
+            backgroundColor: [
+                'rgba(255, 99, 132, 0.2)',
+                'rgba(54, 162, 235, 0.2)',
+                'rgba(255, 206, 86, 0.2)',
+                'rgba(75, 192, 192, 0.2)',
+                'rgba(153, 102, 255, 0.2)',
+                'rgba(255, 159, 64, 0.2)'
+            ],
+            borderColor: [
+                'rgba(255,99,132,1)',
+                'rgba(54, 162, 235, 1)',
+                'rgba(255, 206, 86, 1)',
+                'rgba(75, 192, 192, 1)',
+                'rgba(153, 102, 255, 1)',
+                'rgba(255, 159, 64, 1)'
+            ],
+            borderWidth: 1
+        }]
+    },
+    options: {
+        scales: {
+            yAxes: [{
+                ticks: {
+                    beginAtZero:true
+                }
+            }]
+        }
+    }
+});
+//for S&L
+var ctxSandL = document.getElementById("chartSandL");
+var chartSandL = new Chart(ctxSandL, {
+    type: 'bar',
+    data: {
+        labels: ["June 2015", "Nov 2015"],
+        datasets: [{
+            label: 'Marks',
+            data: [<%= _.pluck(_.where(student[0].academic, {"subject":"Writing"}), 'score') %>],
+            backgroundColor: [
+                'rgba(255, 99, 132, 0.2)',
+                'rgba(54, 162, 235, 0.2)',
+                'rgba(255, 206, 86, 0.2)',
+                'rgba(75, 192, 192, 0.2)',
+                'rgba(153, 102, 255, 0.2)',
+                'rgba(255, 159, 64, 0.2)'
+            ],
+            borderColor: [
+                'rgba(255,99,132,1)',
+                'rgba(54, 162, 235, 1)',
+                'rgba(255, 206, 86, 1)',
+                'rgba(75, 192, 192, 1)',
+                'rgba(153, 102, 255, 1)',
+                'rgba(255, 159, 64, 1)'
+            ],
+            borderWidth: 1
+        }]
+    },
+    options: {
+        scales: {
+            yAxes: [{
+                ticks: {
+                    beginAtZero:true
+                }
+            }]
+        }
+    }
+});
+</script>

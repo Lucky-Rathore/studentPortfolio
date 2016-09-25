@@ -45,7 +45,8 @@ module.exports = {
 "employeeID":"110987",
 "cohort":"2013",
 "programManager":"Tushar Vohra",
-"classes":"1"
+"classes":"2",
+"school" : "1"
 }
 
 
@@ -54,6 +55,7 @@ module.exports = {
 "employeeID":"111602",
 "cohort":"2014",
 "programManager":"Tushar Vohra",
-"classes":"1"
+"classes":"2",
+"school" : "1"
 }
 */

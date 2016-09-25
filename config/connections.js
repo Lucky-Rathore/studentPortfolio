@@ -56,13 +56,9 @@ module.exports.connections = {
   * Run: npm install sails-mongo                                             *
   *                                                                          *
   ***************************************************************************/
-  TFIMongodbServer: {
+  mongodbTFI: {
     adapter: 'sails-mongo',
-    host: 'ds035836.mlab.com',
-    port: 35836,
-    user: 'luckyrathore', //optional
-    password: 'luckytfi5123', //optional
-    database: 'tfistudent' //optional
+    url: process.env.DB_URL
   }
 
   /***************************************************************************
