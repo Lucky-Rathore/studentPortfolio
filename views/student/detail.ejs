@@ -15,10 +15,7 @@
       <p>Student Absents (present year)  : <b><%= student[0].absentDays%></b></p>
     </div>
     <div class="col-sm-12">
-      <p>Parent Interaction : <b><%= student[0].parentInteraction%></b></p>
-    </div>
-    <div class="col-sm-12">
-      <p>Parent Interaction : <b><%= student[0].parentInteraction%></b></p>
+      <p>Parent Interaction : <b><%= student[0].parentInteraction%>%</b></p>
     </div>
     <div class="col-sm-12">
       <p><%= typeof student[0].presentClass === 'undefined' ? "" : "Class : " + student[0].presentClass.standard %></p>
@@ -27,6 +24,9 @@
       <p><%= typeof student[0].school === 'undefined' ? "" : student[0].school.schoolName + ", " + student[0].school.community + ", " + student[0].school.city  %></p>
     </div>        
   </div>
+  
+
+  <% if(typeof student[0].teachers === 'undefined') {%>
   <h2>Teached By</h2>
   <table class="table">
     <tbody>
@@ -37,52 +37,35 @@
       <% }) %>
     </tbody>
   </table>
-  <h2>Acadmics</h2>
-  <table class="table">
-    <thead>
-      <tr>
-        <th>Subject</th>
-        <th>Period</th>
-        <th>Score</th>
-      </tr>
-    </thead>
-    <tbody>
-      <% _.each(student[0].academic, function(acad) { %>
-        <tr>
-          <td><%= acad.subject %></td>
-          <td><%= acad.scoreType == 'Other' ? acad.periodText : acad.periodText + "%" %></td>
-          <td><%= acad.score %></td>
-        </tr>
-      <% }) %>
-    </tbody>
-  </table> 
-
+  <% } %>
+  
   <div class="row" >
-  <h3>Reading Marks</h3>
-  <div class="col-sm-6">
-    <canvas id="chartReading" width="100" height="100"></canvas>
-  </div>
-  </div>
+    <h2>Acadmics</h2>
+    <h3>Reading Marks</h3>
+    <div class="col-sm-6">
+      <canvas id="chartReading" width="100" height="100"></canvas>
+    </div>
+    </div>
 
-  <div class="row">
-  <h3>Writting Marks</h3>
-  <div class="col-sm-6">
-  <canvas id="chartWriting" width="100" height="100"></canvas>
-  </div>
-  </div>
+    <div class="row">
+    <h3>Writting Marks</h3>
+    <div class="col-sm-6">
+    <canvas id="chartWriting" width="100" height="100"></canvas>
+    </div>
+    </div>
 
-  <div class="row">
-  <h3>Maths Marks</h3>
-  <div class="col-sm-6"">
-  <canvas id="chartMath" width="100" height="100"></canvas>
-  </div>
-  </div>
+    <div class="row">
+    <h3>Maths Marks</h3>
+    <div class="col-sm-6"">
+    <canvas id="chartMath" width="100" height="100"></canvas>
+    </div>
+    </div>
 
-  <div class="row">
-  <h3>S&L Marks</h3>
-  <div class="col-sm-6">
-  <canvas id="chartSandL" width="100" height="100"></canvas>
-  </div>
+    <div class="row">
+    <h3>S&L Marks</h3>
+    <div class="col-sm-6">
+    <canvas id="chartSandL" width="100" height="100"></canvas>
+    </div>
   </div>
   
   
@@ -211,7 +194,7 @@ var chartSandL = new Chart(ctxSandL, {
         labels: ["June 2015", "Nov 2015"],
         datasets: [{
             label: 'Marks',
-            data: [<%= _.pluck(_.where(student[0].academic, {"subject":"Writing"}), 'score') %>],
+            data: [<%= _.pluck(_.where(student[0].academic, {"subject":"SandL"}), 'score') %>],
             backgroundColor: [
                 'rgba(255, 99, 132, 0.2)',
                 'rgba(54, 162, 235, 0.2)',
