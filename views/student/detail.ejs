@@ -73,11 +73,22 @@
 
 
 <script>
+var month = ['Jan','Feb', 'March', 'Apr', 'May', 'Jun', 'July', 'Aug', 'Sept', 'Oct', 'Nov', 'Dec'];
+function getLabels(a){
+    var b = [];
+    b = a.split(','); 
+    var d;
+    for(i in b){
+        d = new Date(b[i]);//2013-05-31T18:30:00.000Z
+        b[i] = month[d.getMonth()] + ' ' + d.getFullYear().toString();
+    }
+    return b;
+}
 var ctx = document.getElementById("chartMath");
 var chartMath = new Chart(ctx, {
     type: 'bar',
     data: {
-        labels: ["June 2013", "March 2014", "June 2014", "March 2015", "June 2015", "Nov 2015"],
+        labels: getLabels('<%= _.pluck(_.where(student[0].academic, {"subject":"Math"}), 'period') %>'),
         datasets: [{
             label: 'Marks in %',
             data: [<%= _.pluck(_.where(student[0].academic, {"subject":"Math"}), 'score') %>],
@@ -115,7 +126,7 @@ var ctxReading = document.getElementById("chartReading");
 var chartReading = new Chart(ctxReading, {
     type: 'bar',
     data: {
-        labels: ["June 2013", "March 2014", "June 2014", "March 2015", "June 2015", "Nov 2015"],
+        labels: getLabels('<%= _.pluck(_.where(student[0].academic, {"subject":"Reading"}), 'period') %>'),
         datasets: [{
             label: 'Marks',
             data: [<%= _.pluck(_.where(student[0].academic, {"subject":"Reading"}), 'score') %>],
@@ -153,7 +164,7 @@ var ctxWriting = document.getElementById("chartWriting");
 var chartWriting = new Chart(ctxWriting, {
     type: 'bar',
     data: {
-        labels: ["June 2013", "March 2014", "June 2014", "March 2015", "June 2015", "Nov 2015"],
+        labels: getLabels('<%= _.pluck(_.where(student[0].academic, {"subject":"Writing"}), 'period') %>'),
         datasets: [{
             label: 'Marks',
             data: [<%= _.pluck(_.where(student[0].academic, {"subject":"Writing"}), 'score') %>],
@@ -191,7 +202,7 @@ var ctxSandL = document.getElementById("chartSandL");
 var chartSandL = new Chart(ctxSandL, {
     type: 'bar',
     data: {
-        labels: ["June 2015", "Nov 2015"],
+        labels: getLabels('<%= _.pluck(_.where(student[0].academic, {"subject":"SandL"}), 'period') %>'),
         datasets: [{
             label: 'Marks',
             data: [<%= _.pluck(_.where(student[0].academic, {"subject":"SandL"}), 'score') %>],

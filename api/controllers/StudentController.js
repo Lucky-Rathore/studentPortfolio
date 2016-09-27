@@ -15,8 +15,6 @@ module.exports = {
 		.exec(function(err, studentResp) {
 		  if (err) return next(err);
 	      if (!studentResp) return next();
-	      var x = JSON.stringify(studentResp);
-	      console.log(JSON.stringify(studentResp));
 	      res.view( {student : JSON.parse(JSON.stringify(studentResp)) } );
 		});
 	});
@@ -28,8 +26,6 @@ module.exports = {
 		.exec(function(err, studentResp) {
 		  if (err) return next(err);
 	      if (!studentResp) return next();
-	      var x = JSON.stringify(studentResp);
-	      console.log(JSON.stringify(studentResp));
 	      res.view( {student : JSON.parse(JSON.stringify(studentResp)) } );
 		});
   }
@@ -37,4 +33,4 @@ module.exports = {
 };
 
 
-
+
