@@ -39,51 +39,31 @@ module.exports = {
       model: 'school'
     },
     teachers: {
-      collection: 'fellow'
+      collection: 'fellow',
+      via: 'students',
+      dominant: true
     }
 
   }
 };
 /*
 {
-"name":"Richa Shah",
-"gender":"Female",
-"instructionHours":"28",
-"absentDays":"20",
-"parentInteraction":"70",
-"classes":"1",
-"school":"2",
-"teachers": "{110987, 111602}"
-}
+"name":"Amrita Sahu", "gender":"Female", "instructionHours":"28", "absentDays":"4", "parentInteraction":"40", 
+"presentClass":"57e9cdc52e40a6781a0443bf",
+"school":"57e86db50f11ba5816b82f56",,
+"teachers" : ["57e9ce292e40a6781a0443c1", "57e9ce292e40a6781a0443c0"]
 
-{
-"name":"Amrita Sahu",
-"gender":"Female",
-"instructionHours":"28",
-"absentDays":"4",
-"parentInteraction":"40",
-"classes":"1",
-"school":"2",
-"teachers": "110987"
 },
 {
-"name":"Rahul Sharma",
-"gender":"Female",
-"instructionHours":"28",
-"absentDays":"7",
-"parentInteraction":"30",
-"classes":"1",
-"school":"2",
-"teachers": "110987"
+"name":"Rahul Sharma", "gender":"Female", "instructionHours":"28", "absentDays":"7", "parentInteraction":"30",
+"presentClass":"57e9cdc52e40a6781a0443bf",
+"school":"57e86db50f11ba5816b82f56",
+"teachers" : ["57e9ce292e40a6781a0443c1", "57e9ce292e40a6781a0443c0"]
 },
 {
-"name":"Richa Shah",
-"gender":"Female",
-"instructionHours":"28",
-"absentDays":"2",
-"parentInteraction":"70",
-"classes":"1",
-"school":"2",
-"teachers": "110987"
+"name":"Richa Shah", "gender":"Female", "instructionHours":"28", "absentDays":"2", "parentInteraction":"70",
+"presentClass":"57e9cdc52e40a6781a0443bf",
+"school":"57e86db50f11ba5816b82f56",
+"teachers" : ["57e9ce292e40a6781a0443c1", "57e9ce292e40a6781a0443c0"]
 }
 */

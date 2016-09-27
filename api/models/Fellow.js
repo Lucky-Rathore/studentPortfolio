@@ -33,21 +33,25 @@ module.exports = {
 		via: 'fellows'
 	},
 	school: {
-		model: 'school'
+		model: 'school',
+	},
+	students: {
+		collection: 'student',
+		via: 'teachers'
 	}
 
   }
 };
 
 /*
-{
+[{
 "fellowName":"Anand Sharma",
 "employeeID":"110987",
 "cohort":"2013",
 "programManager":"Tushar Vohra",
-"classes":"2",
-"school" : "1"
-}
+"classes":"57e807ccd009e43823811d49",
+"school" : "57e80772d009e43823811d48"
+},
 
 
 {
@@ -55,7 +59,7 @@ module.exports = {
 "employeeID":"111602",
 "cohort":"2014",
 "programManager":"Tushar Vohra",
-"classes":"2",
-"school" : "1"
-}
+"classes":"57e807ccd009e43823811d49",
+"school" : "57e80772d009e43823811d48"
+}]
 */
